@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/Rocket.jpg</file>
+    <file>icons/Rocket picture.jpg</file>
+  </qresource>
+</RCC>

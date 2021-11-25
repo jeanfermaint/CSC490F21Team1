@@ -1,0 +1,21 @@
+Accelaration: 101 Gyroscope: -97,-244,-30 Magneto: -2469, 2783, -3652 Altitude: 41 Time: -2034 
+Accelaration: 101 Gyroscope: -67,-378,67 Magneto: -2474, 2731, -3771 Altitude: 61 Time: 1266 
+Accelaration: 102 Gyroscope: -85,-372,48 Magneto: -2502, 2729, -3807 Altitude: 51 Time: 2862 
+Accelaration: 102 Gyroscope: -61,-360,85 Magneto: -2441, 2766, -3752 Altitude: 37 Time: 6757 
+Accelaration: 100 Gyroscope: -79,-396,73 Magneto: -2447, 2703, -3693 Altitude: 21 Time: 9806 
+Accelaration: 101 Gyroscope: -42,-421,36 Magneto: -2437, 2791, -3754 Altitude: 42 Time: 12201 
+Accelaration: 102 Gyroscope: -85,-311,97 Magneto: -2478, 2783, -3802 Altitude: 45 Time: 13550 
+Accelaration: 102 Gyroscope: -61,-341,109 Magneto: -2485, 2824, -3719 Altitude: 69 Time: 15299 
+Accelaration: 102 Gyroscope: -54,-402,97 Magneto: -2464, 2867, -3795 Altitude: 49 Time: 16392 
+Accelaration: 101 Gyroscope: -54,-329,152 Magneto: -2458, 2816, -3784 Altitude: 71 Time: 17548 
+Accelaration: 101 Gyroscope: -48,-384,61 Magneto: -2513, 2773, -3709 Altitude: 90 Time: 18652 
+Accelaration: 101 Gyroscope: -61,-366,79 Magneto: -2443, 2833, -3829 Altitude: 40 Time: 19941 
+Accelaration: 101 Gyroscope: -73,-372,115 Magneto: -2481, 2779, -3848 Altitude: 97 Time: 21590 
+Accelaration: 101 Gyroscope: -115,-354,0 Magneto: -2503, 2801, -3764 Altitude: 126 Time: 22785 
+Accelaration: 101 Gyroscope: -61,-439,97 Magneto: -2454, 2772, -3814 Altitude: 86 Time: 23893 
+Accelaration: 102 Gyroscope: -61,-335,85 Magneto: -2479, 2745, -3968 Altitude: 78 Time: 25062 
+Accelaration: 101 Gyroscope: -79,-366,54 Magneto: -2459, 2744, -3829 Altitude: 59 Time: 26124 
+Accelaration: 101 Gyroscope: -48,-366,103 Magneto: -2517, 2770, -3797 Altitude: 57 Time: 27581 
+Accelaration: 101 Gyroscope: -67,-366,97 Magneto: -2507, 2829, -3812 Altitude: 104 Time: 29079 
+Accelaration: 101 Gyroscope: -48,-354,79 Magneto: -2518, 2794, -3798 Altitude: 87 Time: 30476 
+
