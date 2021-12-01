@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <RocketFlightBLE.h>
-#define DEBUG true
+#define DEBUG false
 
 #define MAXBLESIZE 200
 #define DATASIZE 960
@@ -28,6 +28,14 @@ union FltData {
 
 RocketFlightBLE rktFlt;
 
+//state actions
+#define STATE_BOOT 0
+#define STATE_NONE 1
+#define STATE_ARM 2
+#define STATE_RUN 3
+#define STATE_STOPPING 4
+#define STATE_DONE 5
+
 // Global variables
 float groundPressurekPa;
 int16_t AcX,AcY,AcZ,GyX,GyY,GyZ,MaX,MaY,MaZ;
@@ -38,13 +46,7 @@ int gravityAcc;
 int period = 1;
 unsigned long time_now = 0;
 
-//state actions
-#define STATE_BOOT 0
-#define STATE_NONE 1
-#define STATE_ARM 2
-#define STATE_RUN 3
-#define STATE_STOPPING 4
-#define STATE_DONE 5
+
 
 struct AMS{
   float AcX,AcY,AcZ,GyX,GyY,GyZ,MaX,MaY,MaZ;
@@ -348,8 +350,8 @@ void StoreData(){
   sprintf(buffer, "Accelaration: %d Gyro: %d,%d,%d Magneto: %d,%d,%d Altitude: %d Time: %d",
   flight.dataRows[inx][0],flight.dataRows[inx][1],flight.dataRows[inx][2],
   flight.dataRows[inx][3],flight.dataRows[inx][4],flight.dataRows[inx][5],
-  flight.dataRows[inx][6],flight.dataRows[inx][7],flight.dataRows[inx][8],
-  Serial.println(buffer)
+  flight.dataRows[inx][6],flight.dataRows[inx][7],flight.dataRows[inx][8]);
+  Serial.println(buffer);
   
   for (int i=0;i<100;i++){
     Serial.print("Flight Data: ");

@@ -129,7 +129,7 @@ void loop() {
           sprintf(msgbuffer,"%d %d %d %d %d %d %d %d %d",
           flight.dataRows[inx][0],flight.dataRows[inx][1],flight.dataRows[inx][2],
           flight.dataRows[inx][3],flight.dataRows[inx][4],flight.dataRows[inx][5],
-          flight.dataRows[inx][6],flight.dataRows[inx][7],flight.dataRows[inx][8],
+          flight.dataRows[inx][6],flight.dataRows[inx][7],flight.dataRows[inx][8]);
           
           Serial.print(msgbuffer);
           Serial.println();
