@@ -20,11 +20,23 @@ const int ledPin = LED_BUILTIN;
 const int buttonPin = 2;
 int oldButtonState = 0;
 
+struct dataRow{
+  unsigned long timeMs;
+  short int data[DATACOLS];
+};
 
 union FltData {
-  byte byteData[DATAROWS*DATACOLS*sizeof(short int)];
-  short int dataRows[DATAROWS][DATACOLS];
+  byte byteData[sizeof(struct dataRow)*DATAROWS];
+  struct dataRow row[DATAROWS];
 } flight;
+
+//union FltData {
+//  byte byteData[rowS*DATACOLS*sizeof(short int)+sizeof(long int)*rowS];
+//  struct row[rowS];
+////  short int rows[rowS][DATACOLS];
+//} flight;
+
+
 
 RocketFlightBLE rktFlt;
 
@@ -337,20 +349,20 @@ void StoreData(){
   float totalAcc = ComputeAcc(d.AcX,d.AcY,d.AcZ);
 
   inx++;
-  flight.dataRows[inx][0]=totalAcc*100;
-  flight.dataRows[inx][1]=d.GyX*100;
-  flight.dataRows[inx][2]=d.GyY*100;
-  flight.dataRows[inx][3]=d.GyZ*100;
-  flight.dataRows[inx][4]=d.MaX*100;
-  flight.dataRows[inx][5]=d.MaY*100;
-  flight.dataRows[inx][6]=d.MaZ*100;
-  flight.dataRows[inx][7]=alt*100;
-  flight.dataRows[inx][8]=millis();
+  flight.row[inx].data[0]=totalAcc*100;
+  flight.row[inx].data[1]=d.GyX*100;
+  flight.row[inx].data[2]=d.GyY*100;
+  flight.row[inx].data[3]=d.GyZ*100;
+  flight.row[inx].data[4]=d.MaX*100;
+  flight.row[inx].data[5]=d.MaY*100;
+  flight.row[inx].data[6]=d.MaZ*100;
+  flight.row[inx].data[7]=alt*100;
+  flight.row[inx].timeMs=millis();
 
   sprintf(buffer, "Accelaration: %d Gyro: %d,%d,%d Magneto: %d,%d,%d Altitude: %d Time: %d",
-  flight.dataRows[inx][0],flight.dataRows[inx][1],flight.dataRows[inx][2],
-  flight.dataRows[inx][3],flight.dataRows[inx][4],flight.dataRows[inx][5],
-  flight.dataRows[inx][6],flight.dataRows[inx][7],flight.dataRows[inx][8]);
+  flight.row[inx].data[0],flight.row[inx].data[1],flight.row[inx].data[2],
+  flight.row[inx].data[3],flight.row[inx].data[4],flight.row[inx].data[5],
+  flight.row[inx].data[6],flight.row[inx].data[7],flight.row[inx].timeMs);
   Serial.println(buffer);
   
   for (int i=0;i<100;i++){
@@ -358,7 +370,7 @@ void StoreData(){
     Serial.print(i+1);
     Serial.print("--- ");
     for (int j=0;j<9;j++){
-      Serial.print(flight.dataRows[i][j]);
+      Serial.print(flight.row[i].data[j]);
       Serial.print(" ");
          
     }

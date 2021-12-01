@@ -25,10 +25,20 @@ const int buttonPin = 2;
 int oldButtonState = LOW;
 int FlightState;
 
+struct dataRow{
+  unsigned long timeMs;
+  short int data[DATACOLS];
+};
+
 union FltData {
-  byte byteData[DATAROWS*DATACOLS*sizeof(short int)];
-  short int dataRows[DATAROWS][DATACOLS];
+  byte byteData[sizeof(struct dataRow)*DATAROWS];
+  struct dataRow row[DATAROWS];
 } flight;
+
+//union FltData {
+//  byte byteData[DATAROWS*DATACOLS*sizeof(short int)];
+//  short int dataRows[DATAROWS][DATACOLS];
+//} flight;
 
 RocketCentralFlightBLE rktCtrl;
 
@@ -122,14 +132,14 @@ void loop() {
     if (rktCtrl.rocketHasData()) {
       Serial.println("Rocket has data");
       if (rktCtrl.receiveRocketData((byte*)flight.byteData, sizeof(flight.byteData), &totalBytesRead)) {
-        sprintf(msgbuffer, "Bytes %d, rows %d", totalBytesRead, totalBytesRead / (DATACOLS * sizeof(short int)));
+        sprintf(msgbuffer, "Bytes %d, rows %d", totalBytesRead, totalBytesRead / (sizeof(struct dataRow)*DATAROWS));
         Serial.println(msgbuffer);
         for (int inx = 0; inx < sizeof(flight.byteData); inx++){
 //          sprintf(msgbuffer,"Accelaration: %d Gyro: %d,%d,%d Magneto: %d,%d,%d Altitude: %d Time: %d",
           sprintf(msgbuffer,"%d %d %d %d %d %d %d %d %d",
-          flight.dataRows[inx][0],flight.dataRows[inx][1],flight.dataRows[inx][2],
-          flight.dataRows[inx][3],flight.dataRows[inx][4],flight.dataRows[inx][5],
-          flight.dataRows[inx][6],flight.dataRows[inx][7],flight.dataRows[inx][8]);
+          flight.row[inx].data[0],flight.row[inx].data[1],flight.row[inx].data[2],
+          flight.row[inx].data[3],flight.row[inx].data[4],flight.row[inx].data[5],
+          flight.row[inx].data[6],flight.row[inx].data[7],flight.row[inx].timeMs);
           
           Serial.print(msgbuffer);
           Serial.println();
